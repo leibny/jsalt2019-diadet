@@ -1,0 +1,113 @@
+# this file is used by pyannote.metrics and pyannote.database
+# $ export PYANNOTE_DATABASE_CONFIG=/path/to/this/database.yml
+# $ pyannote-metrics.py diarization --subset=development BabyTrain.SpeakerDiarization.All /path/to/one/run/to/rule/them/all.rttm
+
+Protocols:
+
+   AMI:
+      SpeakerDiarization:
+         # AMI.SpeakerDiarization.MixHeadset
+         MixHeadset:
+           train:
+              annotation: /export/fs01/jsalt19/databases/AMI/train/allMix-Headset_train.rttm
+              annotated: /export/fs01/jsalt19/databases/AMI/train/allMix-Headset_train.uem
+           development:
+              annotation: /export/fs01/jsalt19/databases/AMI/dev/allMix-Headset_dev.rttm
+              annotated: /export/fs01/jsalt19/databases/AMI/dev/allMix-Headset_dev.uem
+           test:
+              annotation: /export/fs01/jsalt19/databases/AMI/test/allMix-Headset_test.rttm
+              annotated: /export/fs01/jsalt19/databases/AMI/test/allMix-Headset_test.uem
+
+         # AMI.SpeakerDiarization.Array1
+         Array1:
+           train:
+             annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/AMI/dev/allArray1-01_dev.rttm
+             annotated: /export/fs01/jsalt19/databases/AMI/dev/allArray1-01_dev.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/AMI/test/allArray1-01_test.rttm
+             annotated: /export/fs01/jsalt19/databases/AMI/test/allArray1-01_test.uem
+          
+         # AMI.SpeakerDiarization.Array2
+         Array2:
+           train:
+             annotation: /export/fs01/jsalt19/databases/AMI/train/allArray2-01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/AMI/train/allArray2-01_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/AMI/dev/allArray2-01_dev.rttm
+             annotated: /export/fs01/jsalt19/databases/AMI/dev/allArray2-01_dev.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/AMI/test/allArray2-01_test.rttm
+             annotated: /export/fs01/jsalt19/databases/AMI/test/allArray2-01_test.uem
+
+
+   BabyTrain:
+      SpeakerDiarization:
+         # BabyTrain.SpeakerDiarization.All
+         All:
+            train:
+              annotation: /export/fs01/jsalt19/databases/BabyTrain/train/all_train.rttm
+              annotated: /export/fs01/jsalt19/databases/BabyTrain/train/all_train.uem
+            development:
+              annotation: /export/fs01/jsalt19/databases/BabyTrain/dev/all_dev.rttm
+              annotated: /export/fs01/jsalt19/databases/BabyTrain/dev/all_dev.uem
+            test:
+              annotation: /export/fs01/jsalt19/databases/BabyTrain/test/all_test.rttm
+              annotated: /export/fs01/jsalt19/databases/BabyTrain/test/all_test.uem
+         Mini:
+            train:
+               annotation: /export/fs01/jsalt19/databases/BabyTrain/train/all_train.rttm
+               annotated: /export/fs01/jsalt19/databases/BabyTrain/train/all_train.uem
+            development:
+               annotation: /export/fs01/jsalt19/databases/BabyTrain/dev/all_dev.rttm
+               annotated: /export/fs01/jsalt19/databases/BabyTrain/dev/all_dev.uem
+               uris: /export/fs01/jsalt19/databases/BabyTrain/dev/0.3_of_BabyTrain_dev.txt
+            test:
+               annotation: /export/fs01/jsalt19/databases/BabyTrain/test/all_test.rttm
+               annotated: /export/fs01/jsalt19/databases/BabyTrain/test/all_test.uem
+
+   CHiME5:
+      SpeakerDiarization:
+         # CHiME5.SpeakerDiarization.U01
+         U01:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/dev/allU01_dev.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/dev/allU01_dev.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/test/allU01_test.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/test/allU01_test.uem
+
+         # CHiME5.SpeakerDiarization.U06
+         U06:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU06_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU06_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/dev/allU06_dev.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/dev/allU06_dev.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/test/allU06_test.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/test/allU06_test.uem
+
+   SRI:
+      SpeakerDiarization:
+         # SRI.SpeakerDiarization.All
+         All:
+            development:
+               annotation: /export/fs01/jsalt19/databases/SRI/dev/diego_cond_dev.rttm
+               annotatated: /export/fs01/jsalt19/databases/SRI/dev/diego_cond_dev.uem
+            test:
+               annotation: /export/fs01/jsalt19/databases/SRI/test/diego_cond_test.rttm
+               annotatated: /export/fs01/jsalt19/databases/SRI/test/diego_cond_test.uem
+
+Databases:
+   AMI: /export/fs01/jsalt19/databases/AMI/*/wav/{uri}.wav
+   BabyTrain: /export/fs01/jsalt19/databases/BabyTrain/*/wav/{uri}.wav
+   CHiME5: /export/fs01/jsalt19/databases/CHiME5/*/wav/{uri}.wav
+   SRI: /export/fs01/jsalt19/databases/SRI/*/wav/{uri}.wav
+   MUSAN: /export/fs01/jsalt19/databases/auxiliary/musan/{uri}.wav
