@@ -1,0 +1,111 @@
+# this file is used by pyannote.metrics and pyannote.database
+# $ export PYANNOTE_DATABASE_CONFIG=/path/to/this/database.yml
+# $ pyannote-metrics.py diarization --subset=development BabyTrain.SpeakerDiarization.All /path/to/one/run/to/rule/them/all.rttm
+
+Protocols:
+
+   CHiME5:
+      SpeakerDiarization:
+         # CHiME5.SpeakerDiarization.U01
+         U01:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/rttm_dev_final_U01.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/allU01_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/rttm_eval_final_U01.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/allU01_test.uem
+
+         # CHiME5.SpeakerDiarization.U06
+         U06:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU06_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU06_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/rttm_dev_final_U06.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/allU06_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/rttm_eval_final_U06.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/rttms_desh_2/allU06_test.uem
+
+   CHiME5CH1:
+      SpeakerDiarization:
+         # CHiME5.SpeakerDiarization.U06
+         CH1:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+
+   CHiME5CH2:
+      SpeakerDiarization:
+         # CHiME5.SpeakerDiarization.U06
+         CH2:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+
+   CHiME5CH3:
+      SpeakerDiarization:
+         # CHiME5.SpeakerDiarization.U06
+         CH3:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+
+
+   CHiME5CH4:
+      SpeakerDiarization:
+         # CHiME5.SpeakerDiarization.U06
+         CH4:
+           train:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           development:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+           test:
+             annotation: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.rttm
+             annotated: /export/fs01/jsalt19/databases/CHiME5/train/allU01_train.uem
+   
+   dev_beamformit_dereverb_stats_seg_paola:
+	SpeakerDiarization:
+	 development:
+             annotation: /export/c01/draj/kaldi/egs/chime6/s5_track2/exp/dev_beamformit_dereverb_stats_seg_diarization/ref_rttm
+
+   eval_beamformit_dereverb_stats_seg_paola:
+        SpeakerDiarization:
+           test:
+             annotation: /export/c01/draj/kaldi/egs/chime6/s5_track2/exp/eval_beamformit_dereverb_stats_seg_diarization/ref_rttm
+
+Databases:
+   CHiME5CH1: /export/c11/asubraman/kaldi_chime6/master/kaldi/egs/chime6/s5_track2/CHiME6/audio/train/{uri}.CH1.wav #if we want for every single channel
+   CHiME5CH2: /export/c11/asubraman/kaldi_chime6/master/kaldi/egs/chime6/s5_track2/CHiME6/audio/train/{uri}.CH2.wav #if we want for every single channel
+   CHiME5CH3: /export/c11/asubraman/kaldi_chime6/master/kaldi/egs/chime6/s5_track2/CHiME6/audio/train/{uri}.CH3.wav #if we want for every single channel
+   CHiME5CH4: /export/c11/asubraman/kaldi_chime6/master/kaldi/egs/chime6/s5_track2/CHiME6/audio/train/{uri}.CH4.wav #if we want for every single channel
+
+
+#Databases:
+   dev_beamformit_dereverb_stats_seg_paola: /export/c01/draj/kaldi/egs/chime6/s5_track2/enhan/*/{uri}.wav
+   eval_beamformit_dereverb_stats_seg_paola: /export/c01/draj/kaldi/egs/chime6/s5_track2/enhan/*/{uri}.wav
+
+   MUSAN: /export/fs01/jsalt19/databases/auxiliary/musan/{uri}.wav

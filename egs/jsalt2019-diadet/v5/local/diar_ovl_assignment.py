@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 #
-#               
+#
 #
 # Apache 2.0
 #
-# 
-#  -- Modified from Zili Huang's (Johns Hopkins University) VB_resegmentation.py 
-#  -- Uses the speaker attribution (q) matrix from VB resegmentation and an overlap 
-#  -- hypothesis rttm to assign speakers to overlapped frames 
+#
+#  -- Modified from Zili Huang's (Johns Hopkins University) VB_resegmentation.py
+#  -- Uses the speaker attribution (q) matrix from VB resegmentation and an overlap
+#  -- hypothesis rttm to assign speakers to overlapped frames
 #
 # JSALT 2019, Latané Bullock
 
@@ -36,7 +36,10 @@ def get_utt2num_frames(utt2num_frames_filename):
 def rttm2one_hot(uttname, utt2num_frames, full_rttm_filename):
     num_frames = utt2num_frames[uttname]
 
+    # We use 0 to denote silence frames and 1 to denote overlapping frames.
     ref = np.zeros(num_frames)
+    speaker_dict = {}
+    num_spk = 0
 
     with open(full_rttm_filename, 'r') as fh:
         content = fh.readlines()
@@ -48,21 +51,25 @@ def rttm2one_hot(uttname, utt2num_frames, full_rttm_filename):
             continue
         start_time, duration = int(float(line_split[3]) * 100), int(float(line_split[4]) * 100)
         end_time = start_time + duration
-        
+        spkname = line_split[7]
+        if spkname not in speaker_dict.keys():
+            spk_idx = num_spk + 2
+            speaker_dict[spkname] = spk_idx
+            num_spk += 1
+
         for i in range(start_time, end_time):
             if i < 0:
                 raise ValueError("Time index less than 0")
             elif i >= num_frames:
-                print('rttm extends beyond the number of frames...')
-                print(line)
-                print('Start time: ', start_time)
-                print('End time: ', end_time)
-                print('i: ', i) 
-                print('num frame: ', num_frames)               
-                # raise ValueError("Time index exceeds number of frames")
+                print("Time index exceeds number of frames")
+                print(end_time)
+                print(num_frames)
                 break
             else:
-                ref[i] = 1
+                if ref[i] == 0:
+                    ref[i] = speaker_dict[spkname]
+                else:
+                    ref[i] = 1 # The overlapping speech is marked as 1.
     return ref.astype(int)
 
 # create output rttm file
@@ -104,44 +111,58 @@ def main():
 
     utt_list = get_utt_list("{}/utt2spk".format(args.ovl_dir))
     utt2num_frames = get_utt2num_frames("{}/utt2num_frames".format(args.ovl_dir))
-    
+
     for utt in utt_list:
         n_frames = utt2num_frames[utt]
 
-        vad = rttm2one_hot(utt, utt2num_frames, '{}/rttm_in'.format(args.ovl_dir))
+
+        vad = rttm2one_hot(utt, utt2num_frames, '{}/vad.rttm'.format(args.ovl_dir))
         # unique, counts = np.unique(vad, return_counts=True)
         # voiced_frames = dict(zip(unique, counts))[1]
 
+
         overlap = rttm2one_hot(utt, utt2num_frames, '{}/overlap.rttm'.format(args.ovl_dir))
-       
-        # Keep only the voiced frames (0 denotes the silence 
+
+        # Keep only the voiced frames (0 denotes the silence
         # frames, 1 denotes the overlapping speech frames).
         mask = (vad >= 1)
 
         # Remember: q is only for voiced frames
-        q_out = np.load('{}/q_mats/{}_q_out.npy'.format(args.ovl_dir, utt))
-        
-        # Standard procedure from VB reseg - take the most likely speaker 
-        predicted_label_voiced = np.argsort(-q_out, 1)[:,0] + 2 
-        predicted_label = (np.zeros(len(mask))).astype(int)
-        predicted_label[mask] = predicted_label_voiced
-        # This is the 'primary' speaker for each frame
-        create_rttm_output(utt, 'pri', predicted_label, args.ovl_dir, channel=1)
+        try:
+            q_out = np.load('{}/q_mats/{}_q_out.npy'.format(args.ovl_dir, utt))
+            if not q_out.shape[0] == np.count_nonzero(vad > 0):
+                print(utt)
+                print('q shape: {}'.format(q_out.shape[0]))
+                print('VAD voiced: {}'.format(np.count_nonzero(vad > 0)))
+                print('diff: {}'.format(np.count_nonzero(vad > 0) - q_out.shape[0]))
+                print()
+                npad = ( (0, np.count_nonzero(vad > 0) - q_out.shape[0]), (0,0))
+                q_out = np.pad(q_out, npad, 'constant', constant_values=(2,))
+                # raise AssertionError
 
-        # Write "secondary" speakers for overlap regions 
-        # -- take second most likely speaker for each overlap frame 
-        predicted_label_voiced = np.argsort(-q_out, 1)[:,1] + 2 
-        predicted_label = (np.zeros(len(mask))).astype(int)
 
-        frame_t_voiced = 0
-        for t in range(len(mask)):
-            if vad[t] >= 1:
-                if overlap[t] >= 1:
-                    predicted_label[t] = predicted_label_voiced[frame_t_voiced]
-                frame_t_voiced += 1
-            
-        create_rttm_output(utt, 'sec', predicted_label, args.ovl_dir, channel=1)
+            # Standard procedure from VB reseg - take the most likely speaker
+            predicted_label_voiced = np.argsort(-q_out, 1)[:,0] + 2
+            predicted_label = (np.zeros(len(mask))).astype(int)
+            predicted_label[mask] = predicted_label_voiced
+            # This is the 'primary' speaker for each frame
+            create_rttm_output(utt, 'pri', predicted_label, args.ovl_dir, channel=1)
 
+            # Write "secondary" speakers for overlap regions
+            # -- take second most likely speaker for each overlap frame
+            predicted_label_voiced = np.argsort(-q_out, 1)[:,1] + 2
+            predicted_label = (np.zeros(len(mask))).astype(int)
+
+            frame_t_voiced = 0
+            for t in range(len(mask)):
+                if vad[t] >= 1:
+                    if overlap[t] >= 1:
+                        predicted_label[t] = predicted_label_voiced[frame_t_voiced]
+                    frame_t_voiced += 1
+
+            create_rttm_output(utt, 'sec', predicted_label, args.ovl_dir, channel=1)
+        except:
+            pass
 
     return 0
 

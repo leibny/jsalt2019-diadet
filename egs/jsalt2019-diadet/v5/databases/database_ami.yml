@@ -1,0 +1,125 @@
+# this file is used by pyannote.metrics and pyannote.database
+# $ export PYANNOTE_DATABASE_CONFIG=/path/to/this/database.yml
+# $ pyannote-metrics.py diarization --subset=development BabyTrain.SpeakerDiarization.All /path/to/one/run/to/rule/them/all.rttm
+
+Protocols:
+
+   AMI:
+      SpeakerDiarization:
+         # AMI.SpeakerDiarization.MixHeadset
+         MixHeadset:
+           train:
+              annotation: /export/fs01/jsalt19/databases/AMI/train/allMix-Headset_train.rttm
+              annotated: /export/fs01/jsalt19/databases/AMI/train/allMix-Headset_train.uem
+           development:
+              annotation: /export/fs01/jsalt19/databases/AMI/dev/allMix-Headset_dev.rttm
+              annotated: /export/fs01/jsalt19/databases/AMI/dev/allMix-Headset_dev.uem
+           test:
+              annotation: /export/fs01/jsalt19/databases/AMI/test/allMix-Headset_test.rttm
+              annotated: /export/fs01/jsalt19/databases/AMI/test/allMix-Headset_test.uem
+
+         # AMI.SpeakerDiarization.Array1-CH1
+         Array1-CH1:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-01_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-01_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-01_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-01_test.uem
+          
+         # AMI.SpeakerDiarization.Array1-CH2
+         Array1-CH2:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-02_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-02_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-02_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-02_test.uem
+
+         # AMI.SpeakerDiarization.Array1-CH3
+         Array1-CH3:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-03_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-03_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-03_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-03_test.uem
+
+         # AMI.SpeakerDiarization.Array1-CH4
+         Array1-CH4:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-04_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-04_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-04_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-04_test.uem
+
+
+         # AMI.SpeakerDiarization.Array1-CH5
+         Array1-CH5:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-05_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-05_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-05_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-05_test.uem
+
+
+         # AMI.SpeakerDiarization.Array1-CH6
+         Array1-CH6:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-06_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-06_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-06_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-06_test.uem
+
+
+         # AMI.SpeakerDiarization.Array1-CH7
+         Array1-CH7:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-07_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-07_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-07_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-07_test.uem
+
+
+         # AMI.SpeakerDiarization.Array1-CH8
+         Array1-CH8:
+           #train:
+           #  annotation: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.rttm
+           #  annotated: /export/fs01/jsalt19/databases/AMI/train/allArray1-01_train.uem
+           development:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-08_dev.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/dev/allArray1-08_dev.uem
+           test:
+             annotation: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-08_test.rttm
+             annotated: /export/b01/leibny/jsalt-2020/jsalt2019-diadet/egs/jsalt2019-diadet/v5/databases/AMI/test/allArray1-08_test.uem
+
+
+          
+Databases:
+#   AMI: /export/fs01/jsalt19/databases/AMI/*/wav/{uri}.wav
+   AMI: /export/corpora4/ami/amicorpus/*/audio/{uri}.wav

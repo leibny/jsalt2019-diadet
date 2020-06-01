@@ -4,7 +4,7 @@
 #
 #
 # This script is a wrapper for Variational Bayes resegmentation.
-# It shows how to use the code from Brno University of Technology 
+# It shows how to use the code from Brno University of Technology
 # to do resegmentation.
 
 # Begin configuration section.
@@ -36,11 +36,11 @@ if [ $# != 5 ]; then
   echo "Options: "
   echo "  --cmd (utils/run.pl|utils/queue.pl <queue opts>) # How to run jobs."
   echo "  --nj <num-jobs|20>                               # Number of parallel jobs to run."
-  echo "  --max-speakers <n|10>                            # Maximum number of speakers" 
-  echo "                                                   # expected in the utterance" 
+  echo "  --max-speakers <n|10>                            # Maximum number of speakers"
+  echo "                                                   # expected in the utterance"
   echo "					           # (default: 10)"
   echo "  --max-iters <n|10>                               # Maximum number of algorithm"
-  echo "                                                   # iterations (default: 10)" 
+  echo "                                                   # iterations (default: 10)"
   echo "  --downsample <n|25>                              # Perform diarization on input"
   echo "                                                   # downsampled by this factor"
   echo "                                                   # (default: 25)"
@@ -50,24 +50,24 @@ if [ $# != 5 ]; then
   echo "                                                   # this threshold to 0.0 (saves"
   echo "                                                   # memory as the posteriors are"
   echo "                                                   # represented by sparse matrix)"
-  echo "  --epsilon <float|1e-6>                           # Stop iterating, if obj. fun." 
-  echo "                                                   # improvement is less than" 
+  echo "  --epsilon <float|1e-6>                           # Stop iterating, if obj. fun."
+  echo "                                                   # improvement is less than"
   echo "				                   # epsilon"
   echo "  --minDur <n|1>                                   # Minimum number of frames"
   echo "                                                   # between speaker turns imposed"
-  echo "                                                   # by linear chains of HMM" 
-  echo "                                                   # state corresponding to each" 
+  echo "                                                   # by linear chains of HMM"
+  echo "                                                   # state corresponding to each"
   echo "                                                   # speaker. All the states in"
   echo "                                                   # a chain share the same output"
   echo "                                                   # distribution"
   echo "  --loopProb <float|0.9>                           # Probability of not switching"
   echo "                                                   # speakers between frames"
-  echo "  --statScale <float|0.2>                          # Scale sufficient statistics" 
+  echo "  --statScale <float|0.2>                          # Scale sufficient statistics"
   echo "                                                   # collected using UBM"
   echo "  --llScale <float|1.0>                            # Scale UBM likelihood (i.e."
-  echo "                                                   # llScale < 1.0 make" 
+  echo "                                                   # llScale < 1.0 make"
   echo "                                                   # attribution of frames to UBM"
-  echo "                                                   # componets more uncertain)" 
+  echo "                                                   # componets more uncertain)"
   echo "  --channel <n|0>                                  # Channel information in the rttm file"
   echo "  --initialize <n|1>                               # Whether to initalize the"
   echo "                                                   # speaker posterior (if not)"
@@ -105,7 +105,7 @@ fi
 if [ $stage -le 1 ]; then
     # VB resegmentation
     $cmd JOB=1:$nj $output_dir/log/VB_resegmentation.JOB.log \
-      python3 VB/diarization/VB_resegmentation.py --max-speakers $max_speakers \
+      /home/janto/usr/local/anaconda3.5/envs/pyannote/bin/python VB/diarization/VB_resegmentation.py --max-speakers $max_speakers \
         --max-iters $max_iters --downsample $downsample --alphaQInit $alphaQInit \
 	--sparsityThr $sparsityThr --epsilon $epsilon --minDur $minDur \
 	--loopProb $loopProb --statScale $statScale --llScale $llScale \
